@@ -1,10 +1,12 @@
 package kdc.eats.bamboo.server;
 
 import jakarta.persistence.*;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
 public class BogeoEntity {
 
     @Id

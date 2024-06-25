@@ -45,4 +45,8 @@ public class BogeoEntity {
     @Enumerated(EnumType.STRING)
     GenderEnum gender; // 성별
 
+    public void update(NewBogeoRequest dto) {
+        this.name = dto.getName();
+        this.description= dto.getDescription();
+    }
 }

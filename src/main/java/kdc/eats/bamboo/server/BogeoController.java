@@ -25,4 +25,11 @@ public class BogeoController {
     public List<GetPufferFishByIdResponse> getAllBogeos() {
         return service.getAllBogeos();
     }
+    @PatchMapping("/pufferfish")
+    public BogeoEntity updateBogeo(
+            @RequestParam Long id, @RequestBody NewBogeoRequest dto
+    ) {
+        return service.updateBogeo(id, dto);
+    }
+
 }

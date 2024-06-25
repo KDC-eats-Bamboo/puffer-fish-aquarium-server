@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Random;
 
 @Service
@@ -41,6 +42,22 @@ public class BogeoService {
     private static GenderEnum getRandomGenderEnum() {
         GenderEnum[] values = GenderEnum.values();
         return values[random.nextInt(values.length)];
+    }
+
+
+    // 복어 전체 조회
+    public List<GetPufferFishByIdResponse> getAllBogeos() {
+        List<BogeoEntity> PufferFish = repository.findAll();
+        return PufferFish.stream().map(
+                GetPufferFishByIdResponse::of
+        ).toList();
+    }
+
+    // 복어 단일 조회
+    public GetPufferFishByIdResponse getOneBogeo(Long id) {
+        BogeoEntity bogeo = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("복어를 찾을 수 없습니다."));
+        return GetPufferFishByIdResponse.of(bogeo);
     }
 
 }

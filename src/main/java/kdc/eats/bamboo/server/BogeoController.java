@@ -1,9 +1,9 @@
 package kdc.eats.bamboo.server;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -16,4 +16,13 @@ public class BogeoController {
         return service.addNewBogeo(dto);
     }
 
+    @GetMapping("/pufferfish/{id}") // 복어 단일 조회
+    public GetPufferFishByIdResponse getOneBogeo(@RequestParam Long id) {
+        return service.getOneBogeo(id);
+    }
+
+    @GetMapping("/pufferfish") // 복어 전체 조회
+    public List<GetPufferFishByIdResponse> getAllBogeos() {
+        return service.getAllBogeos();
+    }
 }

@@ -1,5 +1,6 @@
 package kdc.eats.bamboo.server;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,11 +10,8 @@ import java.util.Random;
 @Service
 @RequiredArgsConstructor
 public class BogeoService {
-
     private final BogeoRepository repository;
-
     private static final Random random = new Random();
-
     public BogeoEntity addNewBogeo(NewBogeoRequest dto) {
         BogeoEntity bogeo = new BogeoEntity();
 
@@ -33,6 +31,11 @@ public class BogeoService {
         return bogeo;
     }
 
+    public BogeoEntity updateBogeo(Long id, NewBogeoRequest dto) {
+        BogeoEntity bogeo = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("BogeoEntity with id " + id + " not found"));
+        bogeo.update(dto);
+        return bogeo;
+    }
     private static ContinentEnum getRandomContinentEnum() {
         ContinentEnum[] values = ContinentEnum.values();
         return values[random.nextInt(values.length)];

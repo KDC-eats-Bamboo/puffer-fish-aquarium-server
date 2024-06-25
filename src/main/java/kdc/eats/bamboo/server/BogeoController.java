@@ -3,6 +3,8 @@ package kdc.eats.bamboo.server;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 public class BogeoController {
@@ -21,4 +23,8 @@ public class BogeoController {
         return service.updateBogeo(id, dto);
     }
 
+    @GetMapping("/pufferfish/rank")
+    public List<BogeoEntity> rank() {
+        return service.getBogeoRank();
+    }
 }

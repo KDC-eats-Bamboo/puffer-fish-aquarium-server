@@ -45,6 +45,12 @@ public class BogeoEntity {
     @Enumerated(EnumType.STRING)
     GenderEnum gender; // 성별
 
+    @Column(nullable = false)
+    LocalDateTime createdAt; // 생성일
+
+    @Column(nullable = false)
+    LocalDateTime editedAt; // 수정일
+
     public void update(NewBogeoRequest dto) {
         this.name = dto.getName();
         this.description= dto.getDescription();

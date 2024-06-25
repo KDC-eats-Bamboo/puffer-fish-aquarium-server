@@ -32,4 +32,8 @@ public class BogeoController {
         return service.updateBogeo(id, dto);
     }
 
+    @GetMapping("/pufferfish/rank")
+    public List<BogeoEntity> rank() {
+        return service.getBogeoRank();
+    }
 }

@@ -25,12 +25,19 @@ public class BogeoController {
     public List<GetPufferFishByIdResponse> getAllBogeos() {
         return service.getAllBogeos();
     }
+
     @PatchMapping("/pufferfish")
     public BogeoEntity updateBogeo(
             @RequestParam Long id, @RequestBody NewBogeoRequest dto
     ) {
         return service.updateBogeo(id, dto);
     }
+
+    @DeleteMapping("/pufferfish/{id}")
+    public String deleteBogeo(@PathVariable Long id) {
+        return service.deleteBogeo(id);
+    }
+
 
     @GetMapping("/pufferfish/rank")
     public List<BogeoEntity> rank() {

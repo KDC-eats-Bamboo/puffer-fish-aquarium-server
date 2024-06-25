@@ -54,5 +54,6 @@ public class BogeoEntity {
     public void update(NewBogeoRequest dto) {
         this.name = dto.getName();
         this.description= dto.getDescription();
+        this.editedAt = LocalDateTime.now();
     }
 }

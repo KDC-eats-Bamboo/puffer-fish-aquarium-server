@@ -96,4 +96,11 @@ public class BogeoService {
         return GetPufferFishByIdResponse.of(bogeo);
     }
 
+    public String deleteBogeo(Long id) {
+        BogeoEntity bogeo = repository.findById(id)
+                .orElseThrow(() -> new RuntimeException("복어를 찾을 수 없습니다."));
+        repository.deleteById(id);
+        return "복어를 방생했습니다.";
+    }
+
 }

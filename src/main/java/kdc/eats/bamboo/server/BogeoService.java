@@ -30,6 +30,8 @@ public class BogeoService {
         bogeo.liveTemperature = -20 + random.nextFloat() * 60; // -20°C에서 40°C 사이
         bogeo.deadline = LocalDateTime.now().plusDays(365 + random.nextInt(1460)); // 현재부터 1년에서 5년 이내
         bogeo.gender = getRandomGenderEnum();
+        bogeo.createdAt = LocalDateTime.now();
+        bogeo.editedAt = LocalDateTime.now();
 
         repository.save(bogeo);
 

@@ -17,7 +17,7 @@ public class BogeoController {
     }
 
     @GetMapping("/pufferfish/{id}") // 복어 단일 조회
-    public GetPufferFishByIdResponse getOneBogeo(@RequestParam Long id) {
+    public GetPufferFishByIdResponse getOneBogeo(@PathVariable Long id) {
         return service.getOneBogeo(id);
     }
 
@@ -31,16 +31,5 @@ public class BogeoController {
             @RequestParam Long id, @RequestBody NewBogeoRequest dto
     ) {
         return service.updateBogeo(id, dto);
-    }
-
-    @DeleteMapping("/pufferfish/{id}")
-    public String deleteBogeo(@PathVariable Long id) {
-        return service.deleteBogeo(id);
-    }
-
-
-    @GetMapping("/pufferfish/rank")
-    public List<BogeoEntity> rank() {
-        return service.getBogeoRank();
     }
 }

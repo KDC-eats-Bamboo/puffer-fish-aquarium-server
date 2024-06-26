@@ -32,4 +32,15 @@ public class BogeoController {
     ) {
         return service.updateBogeo(id, dto);
     }
+
+    @DeleteMapping("/pufferfish/{id}")
+    public String deleteBogeo(@PathVariable Long id) {
+        return service.deleteBogeo(id);
+    }
+
+
+    @GetMapping("/pufferfish/rank")
+    public List<BogeoEntity> rank() {
+        return service.getBogeoRank();
+    }
 }

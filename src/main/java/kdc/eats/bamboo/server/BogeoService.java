@@ -37,6 +37,7 @@ public class BogeoService {
     public BogeoEntity updateBogeo(Long id, NewBogeoRequest dto) {
         BogeoEntity bogeo = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("BogeoEntity with id " + id + " not found"));
         bogeo.update(dto);
+        repository.save(bogeo);
         return bogeo;
     }
 

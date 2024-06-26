@@ -43,4 +43,7 @@ public class BogeoController {
     public List<BogeoEntity> rank() {
         return service.getBogeoRank();
     }
+
+    @GetMapping("/price")
+    public Long price(@RequestParam Long id) {return service.getPrice(id); }
 }

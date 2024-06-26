@@ -4,11 +4,7 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import java.util.List;
 import java.util.Random;
 
@@ -42,6 +38,12 @@ public class BogeoService {
         BogeoEntity bogeo = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("BogeoEntity with id " + id + " not found"));
         bogeo.update(dto);
         return bogeo;
+    }
+
+    public Long getPrice(Long id) {
+        BogeoEntity bogeo = repository.findById(id).orElseThrow(() -> new EntityNotFoundException("BogeoEntity with id " + id + " not found"));
+        Long price = (long) (1000 + bogeo.expansionRate * 100);
+        return price;
     }
     private static ContinentEnum getRandomContinentEnum() {
         ContinentEnum[] values = ContinentEnum.values();
